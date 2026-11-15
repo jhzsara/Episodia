@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Episodia",
+    "slug": "episodia",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "android": {
+      "package": "com.episodia.app"
+    },
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#101116"
+    }
+  }
+}
