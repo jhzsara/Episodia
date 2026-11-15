@@ -1,21 +1,63 @@
 # EPISODIA
 
-A TV-series diary and discovery app for Android.
+A social TV diary for discovering series, tracking what you watch, and sharing your thoughts.
 
-## Current prototype
-- Original dark, warm editorial visual identity
-- Home, Discover, Watchlist and Profile tabs
-- Search and genre filters
-- Save/remove series from a personal watchlist
-- Series detail view
+## Current build
 
-The current build uses sample series data. Accounts, cloud sync, real TMDB search, season/episode tracking, reviews and social features are planned for later milestones.
+This repository contains an Expo / React Native Android-first app.
 
-## Run locally
-1. Install Node.js and Expo Go on an Android phone.
-2. In this repository, run `npm install`.
-3. Run `npx expo start`.
-4. Scan the QR code with Expo Go.
+Implemented in the current code:
+- Dark editorial visual identity and bottom navigation
+- Email/password sign-up and sign-in UI using Supabase Auth
+- TV series search and trending catalogue integration through TMDB
+- Personal library statuses: plan to watch, watching, completed, paused, dropped
+- Episode progress fields (season and episode)
+- Reviews with a personal rating
+- Community activity feed
+- Row Level Security database schema for profiles, libraries, reviews, follows and likes
+
+Still required before a public Play Store release:
+- Create and configure the Supabase project and apply the SQL migration
+- Add TMDB API credentials and confirm the intended use complies with TMDB attribution / terms
+- Finish profile editing, follow/unfollow interactions, review likes, moderation and report/block tools
+- Add secure account deletion and a public account-deletion request page
+- Add privacy policy, terms, support contact and Play Store Data safety disclosures
+- Test sign-up, email confirmation, password reset, offline/error states and all database policies
+- Add app icon, screenshots, store listing and content rating
+- Run Android QA and produce a signed Android App Bundle (.aab)
+
+## Setup
+
+1. Install Node.js (LTS) and the Expo tooling.
+2. Clone this repository.
+3. Run `npm install`.
+4. Copy `.env.example` to `.env`.
+5. Fill in:
+   - `EXPO_PUBLIC_SUPABASE_URL`
+   - `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+   - `EXPO_PUBLIC_TMDB_API_KEY`
+6. In Supabase SQL Editor, run `supabase/migrations/202611150001_initial_schema.sql`.
+7. Run `npx expo start` and open it with Expo Go.
+
+Do not put Supabase service-role keys or other server secrets in the mobile app. Only the Supabase publishable key belongs in the client.
 
 ## Android release
-This is an Expo starter project, not a signed Play Store release. An Android build and Google Play testing/release setup will be needed before publishing.
+
+The repository includes EAS build profiles in `eas.json`. After creating an Expo account and configuring the project, use:
+
+```bash
+npx eas-cli login
+npx eas-cli build:configure
+npx eas-cli build --platform android --profile production
+```
+
+The production profile is configured to produce an Android App Bundle. A successful build is not, by itself, proof that the app is ready for publication: complete the QA and Play Console requirements above first.
+
+## Data and services
+
+- Supabase: authentication and app data.
+- TMDB: TV metadata, posters and series catalogue. Episodia is not endorsed or certified by TMDB.
+
+## Privacy and safety
+
+This is a development build. Do not collect real users' personal data until the privacy policy, deletion flow, support process, access policies and Play Store disclosures have been reviewed and tested.
