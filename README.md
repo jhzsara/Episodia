@@ -9,7 +9,7 @@ This repository contains an Expo / React Native Android-first app.
 Implemented in the current code:
 - Dark editorial visual identity and bottom navigation
 - Email/password sign-up and sign-in UI using Supabase Auth
-- TV series search and trending catalogue integration through TMDB
+- TV series search and catalogue integration through TVmaze (no API key required)
 - Personal library statuses: plan to watch, watching, completed, paused, dropped
 - Episode progress fields (season and episode)
 - Reviews with a personal rating
@@ -18,7 +18,7 @@ Implemented in the current code:
 
 Still required before a public Play Store release:
 - Create and configure the Supabase project and apply the SQL migration
-- Add TMDB API credentials and confirm the intended use complies with TMDB attribution / terms
+- Include TVmaze attribution and comply with the CC BY-SA ShareAlike licence
 - Finish profile editing, follow/unfollow interactions, review likes, moderation and report/block tools
 - Add secure account deletion and a public account-deletion request page
 - Add privacy policy, terms, support contact and Play Store Data safety disclosures
@@ -35,7 +35,7 @@ Still required before a public Play Store release:
 5. Fill in:
    - `EXPO_PUBLIC_SUPABASE_URL`
    - `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-   - `EXPO_PUBLIC_TMDB_API_KEY`
+
 6. In Supabase SQL Editor, run `supabase/migrations/202611150001_initial_schema.sql`.
 7. Run `npx expo start` and open it with Expo Go.
 
@@ -56,7 +56,7 @@ The production profile is configured to produce an Android App Bundle. A success
 ## Data and services
 
 - Supabase: authentication and app data.
-- TMDB: TV metadata, posters and series catalogue. Episodia is not endorsed or certified by TMDB.
+- TVmaze: TV metadata, posters and series catalogue. Episodia is not affiliated with TVmaze.
 
 ## Privacy and safety
 
