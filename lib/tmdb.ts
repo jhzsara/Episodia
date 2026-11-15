@@ -1,5 +1,5 @@
 const BASE = 'https://api.tvmaze.com';
-const IMAGE = '';
+export const IMAGE = '';
 function cleanSummary(value) { return (value || '').replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/\s+/g,' ').trim(); }
 function normalize(show) {
   const episodes = show._embedded?.episodes || [];
@@ -38,4 +38,4 @@ export async function seasonDetails(id, season) {
   const rows = await request(`/shows/${id}/episodes?specials=0`);
   return rows.filter(row=>row.season===season);
 }
-export const IMAGE = IMAGE;
+
